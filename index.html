@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boss Mobile Junction | Mobile Repair, Phones & Home Appliances – Gonda</title>
+  <meta name="description" content="Boss Mobile Junction, Nawabganj Gonda – Mobile repair, new & second-hand phones, easy EMI, accessories, fridge, AC, cooler, washing machine, TV, lithium & e-rickshaw batteries." />
+
+  <!-- ===== Google Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- ===== Font Awesome (icons) ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- ===== Tailwind CSS (CDN) ===== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom colors – yahan se poori website ke colors badal sakte hain
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy:   '#0B1B3F',  // Dark navy (main background / text)
+              blue:   '#1E56D9',  // Primary blue
+              orange: '#FF7A1A',  // Accent orange (buttons / highlights)
+              light:  '#F4F7FE',  // Light section background
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Hind', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- ===== Custom CSS ===== -->
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', 'Hind', sans-serif; }
+
+    /* Hero background gradient */
+    .hero-bg {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,122,26,.25), transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(30,86,217,.45), transparent 45%),
+        linear-gradient(135deg, #0B1B3F 0%, #12306f 100%);
+    }
+
+    /* Service card hover effect */
+    .service-card { transition: transform .3s ease, box-shadow .3s ease; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,27,63,.15); }
+
+    /* WhatsApp floating button pulse animation */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+      70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .wa-float { animation: pulse-ring 2s infinite; }
+
+    /* Scroll reveal animation */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* Form input style */
+    .field {
+      width: 100%; padding: .8rem 1rem; border: 1.5px solid #dbe3f5;
+      border-radius: .75rem; background: #fff; outline: none; transition: .2s;
+    }
+    .field:focus { border-color: #1E56D9; box-shadow: 0 0 0 3px rgba(30,86,217,.15); }
+  </style>
+</head>
+
+<body class="bg-white text-slate-700">
+
+  <!-- =====================================================
+       TOP BAR – phone / address (sirf desktop par dikhega)
+       ===================================================== -->
+  <div class="hidden md:block bg-brand-navy text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+      <span><i class="fa-solid fa-location-dot text-brand-orange mr-2"></i>Kanya Inter College ke saamne, Nawabganj, Gonda (U.P.)</span>
+      <span>
+        <a href="tel:+919984355455" class="mr-5 hover:text-brand-orange"><i class="fa-solid fa-phone text-brand-orange mr-2"></i>99843-55455</a>
+        <a href="mailto:bossphonevalaji9000@gmail.com" class="hover:text-brand-orange"><i class="fa-solid fa-envelope text-brand-orange mr-2"></i>bossphonevalaji9000@gmail.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo / Business name -->
+      <a href="#home" class="flex items-center gap-2">
+        <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-blue to-brand-navy text-white grid place-items-center text-xl">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-extrabold text-brand-navy text-lg">BOSS MOBILE</span>
+          <span class="block text-xs font-semibold text-brand-orange tracking-widest">JUNCTION</span>
+        </span>
+      </a>
+
+      <!-- Desktop menu -->
+      <ul class="hidden lg:flex items-center gap-8 font-medium text-brand-navy">
+        <li><a href="#home" class="hover:text-brand-orange">Home</a></li>
+        <li><a href="#about" class="hover:text-brand-orange">About</a></li>
+        <li><a href="#services" class="hover:text-brand-orange">Services</a></li>
+        <li><a href="#why" class="hover:text-brand-orange">Why Us</a></li>
+        <li><a href="#demo" class="hover:text-brand-orange">Free Demo</a></li>
+        <li><a href="#contact" class="hover:text-brand-orange">Contact</a></li>
+      </ul>
+
+      <a href="#demo" class="hidden lg:inline-block bg-brand-orange hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full shadow-lg transition">
+        Book Free Demo
+      </a>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="lg:hidden text-2xl text-brand-navy" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile menu (toggle hota hai JS se) -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t px-4 pb-4">
+      <a href="#home" class="block py-2 font-medium">Home</a>
+      <a href="#about" class="block py-2 font-medium">About</a>
+      <a href="#services" class="block py-2 font-medium">Services</a>
+      <a href="#why" class="block py-2 font-medium">Why Us</a>
+      <a href="#demo" class="block py-2 font-medium">Free Demo</a>
+      <a href="#contact" class="block py-2 font-medium">Contact</a>
+      <a href="#demo" class="mt-2 block text-center bg-brand-orange text-white font-semibold py-2.5 rounded-full">Book Free Demo</a>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       HERO SECTION
+       ===================================================== -->
+  <section id="home" class="hero-bg text-white">
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-block bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-sm mb-5">
+          <i class="fa-solid fa-star text-brand-orange mr-1"></i> Gonda ki bharosemand mobile & appliance shop
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+          Mobile, Repair, EMI aur <span class="text-brand-orange">Home Appliances</span> – Sab Ek Jagah!
+        </h1>
+        <p class="mt-5 text-lg text-slate-200 max-w-xl">
+          Naye aur purane sabhi brands ke phones, tez & sasta repair, aasaan EMI, aur fridge, AC, TV, washing machine
+          se lekar e-rickshaw battery tak – <b>Boss Mobile Junction</b> par sab kuch milta hai.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#demo" class="bg-brand-orange hover:bg-orange-600 px-7 py-3.5 rounded-full font-semibold shadow-xl transition">
+            <i class="fa-solid fa-calendar-check mr-2"></i>Free Demo Book Karein
+          </a>
+          <a href="https://wa.me/919984355455?text=Hello%20Boss%20Mobile%20Junction%2C%20mujhe%20jaankari%20chahiye."
+             target="_blank" rel="noopener"
+             class="bg-[#25D366] hover:bg-green-600 px-7 py-3.5 rounded-full font-semibold shadow-xl transition">
+            <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>WhatsApp Karein
+          </a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+          <div><p class="text-3xl font-extrabold text-brand-orange">All</p><p class="text-sm text-slate-300">Brands Available</p></div>
+          <div><p class="text-3xl font-extrabold text-brand-orange">EMI</p><p class="text-sm text-slate-300">Easy Finance</p></div>
+          <div><p class="text-3xl font-extrabold text-brand-orange">100%</p><p class="text-sm text-slate-300">Customer Trust</p></div>
+        </div>
+      </div>
+
+      <!-- Hero visual (icons collage) -->
+      <div class="grid grid-cols-2 gap-4 max-w-md mx-auto w-full">
+        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-8 text-center"><i class="fa-solid fa-mobile-screen text-6xl text-brand-orange"></i><p class="mt-3 font-semibold">Smartphones</p></div>
+        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-8 text-center mt-8"><i class="fa-solid fa-screwdriver-wrench text-6xl text-sky-300"></i><p class="mt-3 font-semibold">Repair</p></div>
+        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-8 text-center -mt-4"><i class="fa-solid fa-snowflake text-6xl text-cyan-300"></i><p class="mt-3 font-semibold">AC & Fridge</p></div>
+        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-8 text-center mt-4"><i class="fa-solid fa-car-battery text-6xl text-yellow-300"></i><p class="mt-3 font-semibold">Batteries</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       ABOUT SECTION
+       ===================================================== -->
+  <section id="about" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="bg-gradient-to-br from-brand-blue to-brand-navy rounded-3xl p-10 text-white shadow-2xl">
+          <i class="fa-solid fa-store text-5xl text-brand-orange"></i>
+          <h3 class="mt-5 text-2xl font-bold">Boss Mobile Junction</h3>
+          <p class="mt-2 text-slate-200">Kanya Inter College (Balika Kanya Vidyalaya) ke saamne, Chaudhry Purwa, Nawabganj, Gonda – 271303</p>
+          <div class="mt-6 space-y-2 text-sm">
+            <p><i class="fa-solid fa-circle-check text-brand-orange mr-2"></i>Genuine products & fair price</p>
+            <p><i class="fa-solid fa-circle-check text-brand-orange mr-2"></i>Experienced repair technicians</p>
+            <p><i class="fa-solid fa-circle-check text-brand-orange mr-2"></i>Aasaan EMI facility</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-orange font-semibold tracking-widest text-sm">ABOUT US</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy mt-2">Aapki har technology zaroorat ka ek hi address</h2>
+        <p class="mt-5 leading-relaxed">
+          Boss Mobile Junction Nawabganj, Gonda mein mobile aur home appliances ki ek bharosemand dukaan hai. Hum sabhi brands ke
+          naye aur second-hand phones bechte hain, mobile repair karte hain, aur aasaan financing par naya phone lene ki suvidha dete hain.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Phone ke saath-saath hamare yahan fridge, cooler, AC, washing machine, TV, lithium battery aur e-rickshaw battery bhi
+          sahi daam par available hain. Hamara maksad hai – <b>sahi daam, sahi salaah aur behtareen service</b>.
+        </p>
+        <a href="#contact" class="inline-block mt-6 bg-brand-navy hover:bg-brand-blue text-white px-6 py-3 rounded-full font-semibold transition">
+          Humse Sampark Karein <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SERVICES / PRODUCTS SECTION
+       Naya service jodne ke liye kisi ek card ko copy-paste karein
+       ===================================================== -->
+  <section id="services" class="py-16 md:py-24 bg-brand-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-brand-orange font-semibold tracking-widest text-sm">OUR SERVICES</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy mt-2">Hum Kya-Kya Dete Hain</h2>
+        <p class="mt-3">Mobile se lekar ghar ke appliances tak – sab kuch ek chhat ke neeche.</p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: Mobile Repair -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-blue grid place-items-center text-2xl"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Mobile Repair</h3>
+          <p class="mt-2 text-sm">Screen, battery, charging port, speaker, software – sabhi brands ke phone ki fast aur bharosemand repairing.</p>
+        </div>
+
+        <!-- Card 2: New Phones -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-orange-100 text-brand-orange grid place-items-center text-2xl"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">New Mobile Phones</h3>
+          <p class="mt-2 text-sm">Samsung, Vivo, Oppo, Realme, Redmi, iPhone aur sabhi brands ke bilkul naye phones best price par.</p>
+        </div>
+
+        <!-- Card 3: Second-hand Phones -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-green-100 text-green-600 grid place-items-center text-2xl"><i class="fa-solid fa-recycle"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Second-Hand Phones</h3>
+          <p class="mt-2 text-sm">Achhi condition ke checked used phones kam budget mein. Purana phone exchange/bechne ki suvidha bhi.</p>
+        </div>
+
+        <!-- Card 4: Easy Finance -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 grid place-items-center text-2xl"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Easy EMI / Financing</h3>
+          <p class="mt-2 text-sm">Naya phone ab aasaan kishton par. Kam documents, jaldi approval. Details ke liye dukaan par aayein.</p>
+        </div>
+
+        <!-- Card 5: Accessories -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-pink-100 text-pink-600 grid place-items-center text-2xl"><i class="fa-solid fa-plug"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Mobile Accessories</h3>
+          <p class="mt-2 text-sm">Back covers, tempered glass, cables, chargers, earphones, power banks aur bahut kuch.</p>
+        </div>
+
+        <!-- Card 6: Fridge & Cooler -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-100 text-cyan-600 grid place-items-center text-2xl"><i class="fa-solid fa-temperature-low"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Fridge & Coolers</h3>
+          <p class="mt-2 text-sm">Ghar ke liye reliable refrigerators aur garmi mein thandak dene wale coolers, sahi daam par.</p>
+        </div>
+
+        <!-- Card 7: AC -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-sky-100 text-sky-600 grid place-items-center text-2xl"><i class="fa-solid fa-snowflake"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Air Conditioners (AC)</h3>
+          <p class="mt-2 text-sm">Split & window AC ke top brands – energy saving models ke saath behtareen offers.</p>
+        </div>
+
+        <!-- Card 8: Washing Machine & TV -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-600 grid place-items-center text-2xl"><i class="fa-solid fa-tv"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">TV & Washing Machine</h3>
+          <p class="mt-2 text-sm">Smart LED TV aur automatic / semi-automatic washing machines – har budget ke liye.</p>
+        </div>
+
+        <!-- Card 9: Batteries -->
+        <div class="service-card reveal bg-white rounded-2xl p-7 shadow">
+          <div class="w-14 h-14 rounded-2xl bg-yellow-100 text-yellow-600 grid place-items-center text-2xl"><i class="fa-solid fa-car-battery"></i></div>
+          <h3 class="mt-4 text-xl font-bold text-brand-navy">Lithium & E-Rickshaw Batteries</h3>
+          <p class="mt-2 text-sm">Lambi chalne wali lithium aur e-rickshaw batteries, warranty ke saath.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       WHY CHOOSE US
+       ===================================================== -->
+  <section id="why" class="py-16 md:py-24 bg-brand-navy text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-brand-orange font-semibold tracking-widest text-sm">WHY CHOOSE US</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold mt-2">Log Hum Par Bharosa Kyun Karte Hain</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-tags text-4xl text-brand-orange"></i>
+          <h4 class="mt-4 font-bold text-lg">Best Price</h4>
+          <p class="mt-2 text-sm text-slate-300">Market se behtar aur sahi daam, koi hidden charge nahi.</p>
+        </div>
+        <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-bolt text-4xl text-brand-orange"></i>
+          <h4 class="mt-4 font-bold text-lg">Fast Service</h4>
+          <p class="mt-2 text-sm text-slate-300">Zyadatar repair usi din – aapka time bachta hai.</p>
+        </div>
+        <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-shield-halved text-4xl text-brand-orange"></i>
+          <h4 class="mt-4 font-bold text-lg">Genuine Products</h4>
+          <p class="mt-2 text-sm text-slate-300">Original products aur parts, warranty ke saath.</p>
+        </div>
+        <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-hand-holding-dollar text-4xl text-brand-orange"></i>
+          <h4 class="mt-4 font-bold text-lg">Easy Finance</h4>
+          <p class="mt-2 text-sm text-slate-300">Kam documents mein aasaan EMI par naya phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FREE DEMO / TRIAL BOOKING SECTION
+       Form data Web3Forms ke through email par aayega
+       ===================================================== -->
+  <section id="demo" class="py-16 md:py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-5 gap-10 items-start">
+
+      <!-- Left: info -->
+      <div class="lg:col-span-2 reveal">
+        <p class="text-brand-orange font-semibold tracking-widest text-sm">FREE DEMO / TRIAL</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy mt-2">Free Demo Book Karein</h2>
+        <p class="mt-4 leading-relaxed">
+          Phone ya koi bhi appliance kharidne se pehle uska live demo dekhein aur khud try karein.
+          Bas form bharein – hum aapko confirm karne ke liye call/WhatsApp karenge.
+        </p>
+        <ul class="mt-6 space-y-3 text-sm">
+          <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i>Bilkul free – koi charge nahi</li>
+          <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i>Apni pasand ka time chunein</li>
+          <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i>Expert se sahi salaah</li>
+        </ul>
+      </div>
+
+      <!-- Right: booking form -->
+      <form id="demoForm" class="lg:col-span-3 reveal bg-white rounded-3xl shadow-xl p-6 md:p-8 space-y-4">
+        <h3 class="text-xl font-bold text-brand-navy"><i class="fa-solid fa-calendar-check text-brand-orange mr-2"></i>Demo Booking Form</h3>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <input type="text"  name="name"  required placeholder="Aapka Naam *" class="field" />
+          <input type="tel"   name="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="Mobile Number (10 digit) *" class="field" />
+        </div>
+
+        <select name="product" required class="field">
+          <option value="">-- Demo kis cheez ka chahiye? * --</option>
+          <option>New Mobile Phone</option>
+          <option>Second-Hand Mobile Phone</option>
+          <option>Refrigerator / Fridge</option>
+          <option>Cooler</option>
+          <option>AC (Air Conditioner)</option>
+          <option>Washing Machine</option>
+          <option>TV</option>
+          <option>Lithium / E-Rickshaw Battery</option>
+        </select>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <input type="date" name="date" id="demoDate" required class="field" />
+          <select name="time" required class="field">
+            <option value="">-- Time chunein * --</option>
+            <option>10:00 AM – 12:00 PM</option>
+            <option>12:00 PM – 02:00 PM</option>
+            <option>02:00 PM – 04:00 PM</option>
+            <option>04:00 PM – 07:00 PM</option>
+          </select>
+        </div>
+
+        <textarea name="message" rows="3" placeholder="Koi aur jaankari (budget, brand, model...)" class="field"></textarea>
+
+        <!-- Spam se bachne ke liye hidden honeypot field (Web3Forms) -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+        <button type="submit" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-semibold py-3.5 rounded-xl shadow-lg transition">
+          <i class="fa-solid fa-paper-plane mr-2"></i>Demo Book Karein
+        </button>
+        <p id="demoStatus" class="text-center text-sm font-medium"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CONTACT SECTION (Form + Details + Map)
+       ===================================================== -->
+  <section id="contact" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-brand-orange font-semibold tracking-widest text-sm">CONTACT US</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy mt-2">Humse Sampark Karein</h2>
+        <p class="mt-3">Koi sawal ho ya product ki jaankari chahiye? Message karein, hum jaldi reply karenge.</p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-2 gap-10">
+
+        <!-- Contact details + map -->
+        <div class="reveal space-y-5">
+          <div class="flex gap-4 bg-brand-light rounded-2xl p-5">
+            <span class="w-12 h-12 shrink-0 rounded-xl bg-brand-blue text-white grid place-items-center"><i class="fa-solid fa-location-dot"></i></span>
+            <div><h4 class="font-bold text-brand-navy">Address</h4>
+              <p class="text-sm">Kanya Inter College (Balika Kanya Vidyalaya) ke saamne, Chaudhry Purwa, Nawabganj, Gonda, Uttar Pradesh – 271303</p></div>
+          </div>
+          <div class="flex gap-4 bg-brand-light rounded-2xl p-5">
+            <span class="w-12 h-12 shrink-0 rounded-xl bg-brand-orange text-white grid place-items-center"><i class="fa-solid fa-phone"></i></span>
+            <div><h4 class="font-bold text-brand-navy">Phone</h4>
+              <a href="tel:+919984355455" class="text-sm hover:text-brand-orange">99843-55455</a></div>
+          </div>
+          <div class="flex gap-4 bg-brand-light rounded-2xl p-5">
+            <span class="w-12 h-12 shrink-0 rounded-xl bg-[#25D366] text-white grid place-items-center"><i class="fa-brands fa-whatsapp text-xl"></i></span>
+            <div><h4 class="font-bold text-brand-navy">WhatsApp</h4>
+              <a href="https://wa.me/919984355455" target="_blank" rel="noopener" class="text-sm hover:text-brand-orange">99843-55455 – Chat shuru karein</a></div>
+          </div>
+          <div class="flex gap-4 bg-brand-light rounded-2xl p-5">
+            <span class="w-12 h-12 shrink-0 rounded-xl bg-brand-navy text-white grid place-items-center"><i class="fa-solid fa-envelope"></i></span>
+            <div><h4 class="font-bold text-brand-navy">Email</h4>
+              <a href="mailto:bossphonevalaji9000@gmail.com" class="text-sm break-all hover:text-brand-orange">bossphonevalaji9000@gmail.com</a></div>
+          </div>
+
+          <!-- Google Map (address ke hisaab se) -->
+          <div class="rounded-2xl overflow-hidden shadow h-64">
+            <iframe
+              title="Boss Mobile Junction Location"
+              src="https://maps.google.com/maps?q=Nawabganj%2C%20Gonda%2C%20Uttar%20Pradesh%20271303&output=embed"
+              width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form id="contactForm" class="reveal bg-brand-light rounded-3xl p-6 md:p-8 space-y-4 self-start">
+          <h3 class="text-xl font-bold text-brand-navy"><i class="fa-solid fa-envelope-open-text text-brand-orange mr-2"></i>Humein Message Bhejein</h3>
+
+          <input type="text"  name="name"  required placeholder="Aapka Naam *" class="field" />
+          <div class="grid md:grid-cols-2 gap-4">
+            <input type="tel"   name="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="Mobile Number *" class="field" />
+            <input type="email" name="email" placeholder="Email (optional)" class="field" />
+          </div>
+          <textarea name="message" rows="5" required placeholder="Aapka message *" class="field"></textarea>
+
+          <!-- Honeypot (spam protection) -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+          <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-semibold py-3.5 rounded-xl shadow-lg transition">
+            <i class="fa-solid fa-paper-plane mr-2"></i>Message Bhejein
+          </button>
+          <p id="contactStatus" class="text-center text-sm font-medium"></p>
+
+          <div class="text-center text-sm text-slate-500">ya seedha</div>
+          <a href="https://wa.me/919984355455?text=Hello%20Boss%20Mobile%20Junction" target="_blank" rel="noopener"
+             class="block text-center bg-[#25D366] hover:bg-green-600 text-white font-semibold py-3.5 rounded-xl shadow-lg transition">
+            <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>WhatsApp Par Chat Karein
+          </a>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="bg-brand-navy text-slate-300">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div>
+        <h4 class="text-white font-extrabold text-xl">BOSS MOBILE <span class="text-brand-orange">JUNCTION</span></h4>
+        <p class="mt-3 text-sm">Mobile repair, new & used phones, EMI, accessories aur home appliances – Gonda ka bharosemand naam.</p>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold mb-3">Quick Links</h5>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#about" class="hover:text-brand-orange">About Us</a></li>
+          <li><a href="#services" class="hover:text-brand-orange">Services</a></li>
+          <li><a href="#demo" class="hover:text-brand-orange">Free Demo</a></li>
+          <li><a href="#contact" class="hover:text-brand-orange">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold mb-3">Contact</h5>
+        <p class="text-sm"><i class="fa-solid fa-location-dot text-brand-orange mr-2"></i>Nawabganj, Gonda (U.P.) – 271303</p>
+        <p class="text-sm mt-2"><i class="fa-solid fa-phone text-brand-orange mr-2"></i>99843-55455</p>
+        <p class="text-sm mt-2 break-all"><i class="fa-solid fa-envelope text-brand-orange mr-2"></i>bossphonevalaji9000@gmail.com</p>
+        <div class="mt-4 flex gap-3 text-lg">
+          <a href="https://wa.me/919984355455" target="_blank" rel="noopener" class="hover:text-[#25D366]" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="tel:+919984355455" class="hover:text-brand-orange" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+          <a href="mailto:bossphonevalaji9000@gmail.com" class="hover:text-brand-orange" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 text-center text-xs py-4">
+      © <span id="year"></span> Boss Mobile Junction. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       FLOATING BUTTONS (WhatsApp + Call) – har page par dikhte hain
+       ===================================================== -->
+  <a href="https://wa.me/919984355455?text=Hello%20Boss%20Mobile%20Junction" target="_blank" rel="noopener"
+     class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white text-3xl grid place-items-center shadow-xl" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="tel:+919984355455"
+     class="fixed bottom-5 left-5 z-50 w-14 h-14 rounded-full bg-brand-orange text-white text-2xl grid place-items-center shadow-xl md:hidden" aria-label="Call">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+  <script>
+    /* ---------------------------------------------------------
+       1) WEB3FORMS ACCESS KEY
+       Apni asli key yahan daalein (https://web3forms.com se milti hai).
+       Abhi placeholder hai: "3f4bb2c7-9cdd-4d3f-9175-0d22a1070374" ko badalna zaroori hai!
+       --------------------------------------------------------- */
+    const WEB3FORMS_KEY = "3f4bb2c7-9cdd-4d3f-9175-0d22a1070374";
+
+    /* 2) Mobile menu toggle */
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    // Menu ke link par click karne par menu band ho jaye
+    mobileMenu.querySelectorAll("a").forEach(a =>
+      a.addEventListener("click", () => mobileMenu.classList.add("hidden"))
+    );
+
+    /* 3) Footer mein current year */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* 4) Demo date: aaj se pehle ki date select nahi ho sakti */
+    document.getElementById("demoDate").min = new Date().toISOString().split("T")[0];
+
+    /* 5) Scroll reveal animation */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    /* ---------------------------------------------------------
+       6) Common function – form ko Web3Forms par bhejta hai
+          formId   : form ka id
+          statusId : message dikhane wale <p> ka id
+          subject  : email ka subject jo aapko milega
+       --------------------------------------------------------- */
+    function handleForm(formId, statusId, subject) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const btn = form.querySelector("button[type=submit]");
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Bhej rahe hain...';
+        status.textContent = "";
+
+        // Form ka saara data object mein
+        const data = Object.fromEntries(new FormData(form).entries());
+        data.access_key = WEB3FORMS_KEY;
+        data.subject = subject;
+        data.from_name = "Boss Mobile Junction Website";
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(data)
+          });
+          const json = await res.json();
+
+          if (json.success) {
+            status.className = "text-center text-sm font-medium text-green-600";
+            status.textContent = "✅ Dhanyavaad! Aapka message mil gaya. Hum jaldi sampark karenge.";
+            form.reset();
+          } else {
+            throw new Error(json.message || "Error");
+          }
+        } catch (err) {
+          status.className = "text-center text-sm font-medium text-red-600";
+          status.textContent = "❌ Kuch gadbad ho gayi. Kripya dobara try karein ya WhatsApp par message karein.";
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+        }
+      });
+    }
+
+    // Dono forms ko activate karein
+    handleForm("demoForm",    "demoStatus",    "New FREE DEMO Booking – Boss Mobile Junction");
+    handleForm("contactForm", "contactStatus", "New Contact Message – Boss Mobile Junction");
+  </script>
+</body>
+</html>
